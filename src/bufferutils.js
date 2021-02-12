@@ -17,12 +17,12 @@ function readUInt64LE(buffer, offset) {
   const a = buffer.readUInt32LE(offset);
   let b = buffer.readUInt32LE(offset + 4);
   b *= 0x100000000;
-  verifuint(b + a, 0x001fffffffffffff);
+  verifuint(b + a, 0x00ffffffffffffff);
   return b + a;
 }
 exports.readUInt64LE = readUInt64LE;
 function writeUInt64LE(buffer, value, offset) {
-  verifuint(value, 0x001fffffffffffff);
+  verifuint(value, 0x00ffffffffffffff);
   buffer.writeInt32LE(value & -1, offset);
   buffer.writeUInt32LE(Math.floor(value / 0x100000000), offset + 4);
   return offset + 8;
@@ -84,7 +84,7 @@ class BufferWriter {
   }
   writeVector(vector) {
     this.writeVarInt(vector.length);
-    vector.forEach(buf => this.writeVarSlice(buf));
+    vector.forEach((buf) => this.writeVarSlice(buf));
   }
 }
 exports.BufferWriter = BufferWriter;
