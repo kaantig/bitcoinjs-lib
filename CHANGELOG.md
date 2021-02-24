@@ -1,3 +1,6 @@
+# 5.3.0
+__fixed__
+- Removed utxo transaction hash and utxo's hexadecimal hash comparison
 # 5.2.0
 __changed__
 - Updated PSBT to allow for witnessUtxo and nonWitnessUtxo simultaneously (Re: segwit psbt bug) (#1563)
